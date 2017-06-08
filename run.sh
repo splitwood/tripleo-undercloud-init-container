@@ -23,7 +23,7 @@ docker create --name undercloud-volumes \
   -v /var/lib/docker-puppet:/var/lib/docker-puppet \
   -v /var/lib/config-data:/var/lib/config-data \
   -v /var/run:/var/run \
-   flaper87/tripleo-undercloud-init-container 
+   tripleo-undercloud-init-container
 
 
 ID=`cat /proc/self/cgroup | grep -o  -e "docker-.*.scope" | head -n 1 | sed "s/docker-\(.*\).scope/\\1/"`
@@ -32,4 +32,4 @@ ID=`cat /proc/self/cgroup | grep -o  -e "docker-.*.scope" | head -n 1 | sed "s/d
 docker run -d --name undercloud-deploy --user root --net=host --privileged \
        --volumes-from $ID \
        --volumes-from undercloud-volumes \
-       -ti flaper87/tripleo-undercloud-init-container /root/deploy.sh
+       -ti tripleo-undercloud-init-container /root/deploy.sh

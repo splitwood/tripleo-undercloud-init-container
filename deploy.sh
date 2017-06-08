@@ -13,7 +13,7 @@ cd paunch
 sudo python setup.py install
 
 cd
-git clone git://git.openstack.org/openstack/tripleo-heat-templates
+git clone https://github.com/splitwood/tripleo-undercloud-init-container.git
 cd tripleo-heat-templates
 
 # PUT PATCHES HERE

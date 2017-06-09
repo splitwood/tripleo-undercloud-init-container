@@ -1,5 +1,8 @@
 # tripleo-undercloud-init-container
 
+This has been tested on CentOS 7. Ensure that all updates are applied.
+Currently SELinux also must be set to permissive.
+
 Installation
 ============
 

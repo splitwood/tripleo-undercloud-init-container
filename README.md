@@ -8,8 +8,11 @@ Installation
 
     git clone https://github.com/splitwood/tripleo-undercloud-init-container.git
     cd tripleo-undercloud-init-container
-    sudo docker build -t tripleo-undercloud-init-container .
-    sudo docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -ti tripleo-undercloud-init-container
+    sudo docker build -t apb-tripleo-cundercloud .
+    sudo docker run --rm \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      -v $YOUR_CUSTOM_ENVS_DIR:/custom-environments \
+      -ti apb-tripleo-undercloud provision
 
 Ironic CLI
 ==========

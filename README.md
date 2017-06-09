@@ -28,7 +28,7 @@ Create a custom environments dir and add this file there:
 
     git clone https://github.com/splitwood/tripleo-undercloud-init-container.git
     cd tripleo-undercloud-init-container
-    sudo docker build -t apb-tripleo-cundercloud .
+    sudo docker build -t apb-tripleo-undercloud .
     sudo docker run --rm \
       -v /var/run/docker.sock:/var/run/docker.sock \
       -v $YOUR_CUSTOM_ENVS_DIR:/custom-environments \

@@ -6,6 +6,26 @@ Currently SELinux also must be set to permissive.
 Installation
 ============
 
+Create a custom environments dir and add this file there:
+
+    cat > $YOUR_CUSTOM_ENVS_DIR/ironic-standalone.yaml <<-EOF_CAT
+    resource_registry:
+      OS::TripleO::Undercloud::Net::SoftwareConfig: /opt/apb/tripleo-heat-templates/net-config-noop.yaml
+
+    parameter_defaults:
+      UndercloudServices:
+        - OS::TripleO::Services::MySQL
+        - OS::TripleO::Services::Apache
+        - OS::TripleO::Services::RabbitMQ
+        - OS::TripleO::Services::IronicApi
+        - OS::TripleO::Services::IronicConductor
+        - OS::TripleO::Services::IronicPxe
+
+      UndercloudExtraConfig:
+          ironic::auth_strategy: noauth
+
+    EOF_CAT
+
     git clone https://github.com/splitwood/tripleo-undercloud-init-container.git
     cd tripleo-undercloud-init-container
     sudo docker build -t apb-tripleo-cundercloud .

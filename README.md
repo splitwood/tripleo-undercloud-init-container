@@ -18,7 +18,7 @@ Create a custom environments dir and add this file there:
     cat > $YOUR_CUSTOM_ENVS_DIR/ironic-standalone.yaml <<-EOF_CAT
     resource_registry:
       OS::TripleO::Undercloud::Net::SoftwareConfig: /opt/apb/tripleo-heat-templates/net-config-noop.yaml
-      OS::TripleO::Services::IronicDnsmasq: templates/ironic-dnsmasq.yaml
+      OS::TripleO::Services::IronicDnsmasq: /opt/apb/tripleo-heat-templates/docker/services/ironic-dnsmasq.yaml
 
     parameter_defaults:
       UndercloudServices:

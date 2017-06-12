@@ -63,13 +63,21 @@ When successful, you will see "Deploy Successful" toward the end of the log.
 Ironic CLI
 ==========
 
-After the installation completes, the Ironic CLI can be used as shown:
+After the installation completes, the Ironic CLI can be used as shown. Replace
+the IP address shown below with the actual IP address of your undercloud:
 
     export OS_AUTH_TOKEN=token
     export IRONIC_URL=http://192.168.23.18:6385
     export IRONIC_API_VERSION=1.31
 
     ironic node-list
+
+Manually assign the first IP address from the provisioning subnet range to the
+provisioning network nic. By default, the nic is eth1 and uses the range
+192.168.24.0/24:
+
+    sudo ip addr add 192.168.24.1/24 dev eth1
+
 
 Reinstalling the container
 ==========================

@@ -11,6 +11,7 @@ Create a custom environments dir and add this file there:
     cat > $YOUR_CUSTOM_ENVS_DIR/ironic-standalone.yaml <<-EOF_CAT
     resource_registry:
       OS::TripleO::Undercloud::Net::SoftwareConfig: /opt/apb/tripleo-heat-templates/net-config-noop.yaml
+      OS::TripleO::Services::IronicDnsmasq: templates/ironic-dnsmasq.yaml
 
     parameter_defaults:
       UndercloudServices:
@@ -20,10 +21,16 @@ Create a custom environments dir and add this file there:
         - OS::TripleO::Services::IronicApi
         - OS::TripleO::Services::IronicConductor
         - OS::TripleO::Services::IronicPxe
+        - OS::TripleO::Services::IronicDnsmasq
 
       UndercloudExtraConfig:
           ironic::auth_strategy: noauth
           ironic::conductor::automated_clean: false
+          ironic::drivers::ipmi::retry_timeout: 60
+          ironic::config::ironic_config:
+            dhcp/dhcp_provider:
+              value: none
+
 
     EOF_CAT
 

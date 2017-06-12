@@ -6,6 +6,11 @@ Currently SELinux also must be set to permissive.
 Installation
 ============
 
+Install and start docker if not already done:
+
+    sudo yum -y install docker
+    sudo systemctl start docker
+
 Create a custom environments dir and add this file there:
 
     export YOUR_CUSTOM_ENVS_DIR=$HOME/custom-environments

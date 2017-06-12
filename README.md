@@ -23,6 +23,7 @@ Create a custom environments dir and add this file there:
 
       UndercloudExtraConfig:
           ironic::auth_strategy: noauth
+          ironic::conductor::automated_clean: false
 
     EOF_CAT
 

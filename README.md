@@ -64,7 +64,8 @@ Ironic CLI
 ==========
 
 After the installation completes, the Ironic CLI can be used as shown. Replace
-the IP address shown below with the actual IP address of your undercloud:
+the IP address shown below with the actual IP address of your undercloud and
+add the following to ~/.bashrc of the undercloud non-root user:
 
     export OS_AUTH_TOKEN=token
     export IRONIC_URL=http://192.168.23.18:6385

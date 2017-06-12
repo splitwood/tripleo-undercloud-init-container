@@ -8,6 +8,8 @@ Installation
 
 Create a custom environments dir and add this file there:
 
+    export YOUR_CUSTOM_ENVS_DIR=$HOME/custom-environments
+    mkdir -p $YOUR_CUSTOM_ENVS_DIR
     cat > $YOUR_CUSTOM_ENVS_DIR/ironic-standalone.yaml <<-EOF_CAT
     resource_registry:
       OS::TripleO::Undercloud::Net::SoftwareConfig: /opt/apb/tripleo-heat-templates/net-config-noop.yaml
@@ -57,8 +59,9 @@ Reinstalling the container
 ==========================
 
 Just rerunning the docker run command for installation may result in errors.
-These are the steps I use to clean up the old install first before rerunning
-which usually works.
+
+I've found that first you have to clean up the old installation before
+rerunning.
 
 This is a destructive operation that will completely delete all containers on
 the undercloud and remove any stateful data from the previous install!
@@ -66,3 +69,5 @@ the undercloud and remove any stateful data from the previous install!
     docker ps -q -a | xargs -tn1 docker stop
     docker ps -q -a | xargs -tn1 docker rm -f
     rm -rf /var/lib/mysql/* /var/lib/rabbitmq/* /var/lib/config-data/rabbitmq/etc/rabbitmq/*
+
+You're now ready to rerun the steps from the Installation section.

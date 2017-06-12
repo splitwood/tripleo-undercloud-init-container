@@ -52,3 +52,17 @@ After the installation completes, the Ironic CLI can be used as shown:
     export IRONIC_API_VERSION=1.31
 
     ironic node-list
+
+Reinstalling the container
+==========================
+
+Just rerunning the docker run command for installation may result in errors.
+These are the steps I use to clean up the old install first before rerunning
+which usually works.
+
+This is a destructive operation that will completely delete all containers on
+the undercloud and remove any stateful data from the previous install!
+
+    docker ps -q -a | xargs -tn1 docker stop
+    docker ps -q -a | xargs -tn1 docker rm -f
+    rm -rf /var/lib/mysql/* /var/lib/rabbitmq/* /var/lib/config-data/rabbitmq/etc/rabbitmq/*

@@ -73,12 +73,6 @@ add the following to ~/.bashrc of the undercloud non-root user:
 
     ironic node-list
 
-Manually assign the first IP address from the provisioning subnet range to the
-provisioning network nic. By default, the nic is eth1 and uses the range
-192.168.24.0/24:
-
-    sudo ip addr add 192.168.24.1/24 dev eth1
-
 
 Reinstalling the container
 ==========================

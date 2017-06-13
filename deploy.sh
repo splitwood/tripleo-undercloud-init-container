@@ -49,7 +49,7 @@ LOCAL_IP=${LOCAL_IP:-`/usr/sbin/ip -4 route get 8.8.8.8 | awk {'print $7'} | tr 
 ls /custom-environments
 EXTRA_ENVS=''
 for f in /custom-environments/*; do
-    [ -e "$f" ] || continue
+    [ -f "$f" ] || continue
     EXTRA_ENVS="$EXTRA_ENVS -e $f";
 done
 

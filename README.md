@@ -53,8 +53,8 @@ When you see the following prompt, just press Enter:
 
     Server [https://localhost:8443]:
 
-The installer will take a few minutes to run (typically 10-15 minutes). You can
-watch the logs with:
+The installer will take a few minutes to run (typically 10-15 minutes). When
+the docker run command exits, you can then watch the logs with:
 
     sudo docker logs -f undercloud-deploy
 

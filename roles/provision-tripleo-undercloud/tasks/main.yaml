@@ -21,6 +21,7 @@
         - /var/lib/docker-puppet:/var/lib/docker-puppet
         - /var/lib/config-data:/var/lib/config-data
         - /var/run:/var/run
+        - /var/lib/ironic:/var/lib/ironic
 
 - name: Deploy the undercloud
   docker_container:

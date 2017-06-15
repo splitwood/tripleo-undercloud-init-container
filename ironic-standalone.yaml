@@ -1,0 +1,41 @@
+resource_registry:
+  OS::TripleO::Undercloud::Net::SoftwareConfig: /opt/apb/tripleo-heat-templates/net-config-noop.yaml
+  OS::TripleO::Services::IronicDnsmasq: /opt/apb/tripleo-heat-templates/docker/services/ironic-dnsmasq.yaml
+  OS::TripleO::Services::IronicInspector: /opt/apb/tripleo-heat-templates/docker/services/ironic-inspector.yaml
+
+parameter_defaults:
+  UndercloudServices:
+    - OS::TripleO::Services::MySQL
+    - OS::TripleO::Services::Apache
+    - OS::TripleO::Services::RabbitMQ
+    - OS::TripleO::Services::IronicApi
+    - OS::TripleO::Services::IronicConductor
+    - OS::TripleO::Services::IronicPxe
+    - OS::TripleO::Services::IronicDnsmasq
+    - OS::TripleO::Services::IronicInspector
+
+  UndercloudExtraConfig:
+      ironic::auth_strategy: noauth
+      ironic::conductor::automated_clean: false
+      ironic::drivers::ipmi::retry_timeout: 60
+      ironic::config::ironic_config:
+        dhcp/dhcp_provider:
+          value: none
+      ironic::drivers::inspector::enabled: true
+      ironic::drivers::inspector::auth_type: '<None>'
+      ironic::inspector::ipxe_timeout: 60
+      ironic::inspector::auth_strategy: noauth
+      ironic::inspector::store_data: none
+
+      # these aren't working
+      # nothing in puppet-ironic runs create_resources on these,
+      # will need to use crudini
+      ironic::config::ironic_inspector_config:
+        firewall/manage_firewall:
+          value: false
+        ironic/auth_strategy:
+          value: noauth
+        ironic/ironic_url:
+          value: noauth
+
+  IronicInspectorUseSwift: False

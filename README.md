@@ -15,33 +15,8 @@ Create a custom environments dir and add this file there:
 
     export YOUR_CUSTOM_ENVS_DIR=$HOME/custom-environments
     mkdir -p $YOUR_CUSTOM_ENVS_DIR
-    cat > $YOUR_CUSTOM_ENVS_DIR/ironic-standalone.yaml <<-EOF_CAT
-    resource_registry:
-      OS::TripleO::Undercloud::Net::SoftwareConfig: /opt/apb/tripleo-heat-templates/net-config-noop.yaml
-      OS::TripleO::Services::IronicDnsmasq: /opt/apb/tripleo-heat-templates/docker/services/ironic-dnsmasq.yaml
-
-    parameter_defaults:
-      UndercloudServices:
-        - OS::TripleO::Services::MySQL
-        - OS::TripleO::Services::Apache
-        - OS::TripleO::Services::RabbitMQ
-        - OS::TripleO::Services::IronicApi
-        - OS::TripleO::Services::IronicConductor
-        - OS::TripleO::Services::IronicPxe
-        - OS::TripleO::Services::IronicDnsmasq
-
-      UndercloudExtraConfig:
-          ironic::auth_strategy: noauth
-          ironic::conductor::automated_clean: false
-          ironic::drivers::ipmi::retry_timeout: 60
-          ironic::config::ironic_config:
-            dhcp/dhcp_provider:
-              value: none
-
-
-    EOF_CAT
-
     git clone https://github.com/splitwood/tripleo-undercloud-init-container.git
+    cp tripleo-undercloud-init-container/ironic-standalone.yaml $YOUR_CUSTOM_ENVS_DIR
     cd tripleo-undercloud-init-container
     sudo docker build -t apb-tripleo-undercloud .
     sudo docker run --rm \

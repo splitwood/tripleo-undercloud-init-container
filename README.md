@@ -24,10 +24,6 @@ Create a custom environments dir and add this file there:
       -v $YOUR_CUSTOM_ENVS_DIR:/custom-environments \
       -ti apb-tripleo-undercloud provision
 
-When you see the following prompt, just press Enter:
-
-    Server [https://localhost:8443]:
-
 The installer will take a few minutes to run (typically 10-15 minutes). When
 the docker run command exits, you can then watch the logs with:
 

@@ -59,5 +59,6 @@ the undercloud and remove any stateful data from the previous install!
     docker ps -q -a | xargs -tn1 docker stop
     docker ps -q -a | xargs -tn1 docker rm -f
     rm -rf /var/lib/mysql/* /var/lib/rabbitmq/* /var/lib/config-data/rabbitmq/etc/rabbitmq/*
+    rm -rf /var/lib/ironic/* /var/lib/ironic-inspector/*
 
 You're now ready to rerun the steps from the Installation section.

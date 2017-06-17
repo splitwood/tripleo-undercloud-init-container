@@ -26,6 +26,7 @@ parameter_defaults:
       ironic::inspector::ipxe_timeout: 60
       ironic::inspector::auth_strategy: noauth
       ironic::inspector::store_data: none
+      ironic::inspector::additional_processing_hooks: store_local
 
       # these aren't working
       # nothing in puppet-ironic runs create_resources on these,

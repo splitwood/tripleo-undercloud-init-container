@@ -3,6 +3,50 @@
 This has been tested on CentOS 7. Ensure that all updates are applied.
 Currently SELinux also must be set to permissive.
 
+Preparations for a minimal CentOS installation
+==============================================
+
+One way to use this project is on top of an undercloud VM created using
+https://github.com/splitwood/tripleo-virt-quickstart .
+
+If you do this, rest of current section should not be needed - you can
+use the user 'stack' in this VM.
+
+To use on minimal CentOS 7:
+
+Create a non-root user, e.g. 'ironicbm':
+
+    useradd -G wheel ironicbm
+    passwd ironicbm
+    su - ironicbm
+
+Make sure this user can ssh to localhost without a password prompt, and
+can sudo without a password prompt:
+
+    ssh-keygen
+    ssh-copy-id localhost
+    sudo sh -c "echo 'ironicbm ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/ironicbm"
+
+Set SELinux to Permissive mode:
+
+    sudo setenforce 0
+
+Make sure you have CentOS Extras repo enabled, e.g.:
+
+    sudo yum install -y centos-release
+
+Add tripleo repos:
+
+    git clone https://git.openstack.org/openstack/tripleo-repos
+    cd tripleo-repos
+    sudo python setup.py install
+    cd
+    sudo tripleo-repos current
+
+Install ironic client and ansible from tripleo repos:
+
+    sudo yum install -y python2-ironicclient ansible
+
 Installation
 ============
 

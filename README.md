@@ -3,6 +3,8 @@
 This has been tested on CentOS 7. Ensure that all updates are applied.
 Currently SELinux also must be set to permissive.
 
+TODO note about disk space. In Didi's case 20G in "/" was not enough, and adding 10G was enough.
+
 Preparations for a minimal CentOS installation
 ==============================================
 

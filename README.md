@@ -35,10 +35,11 @@ Set SELinux to Permissive mode:
 
 Make sure you have CentOS Extras repo enabled, e.g.:
 
-    sudo yum install -y centos-release
+    sudo yum reinstall -y centos-release
 
 Add tripleo repos:
 
+    sudo yum install -y git
     git clone https://git.openstack.org/openstack/tripleo-repos
     cd tripleo-repos
     sudo python setup.py install

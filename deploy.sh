@@ -28,7 +28,7 @@ cp -rf /usr/share/openstack-puppet/modules/* /etc/puppet/modules/
 # Ironic configs via ExtraConfig settings.)
 pushd /etc/puppet/modules
 rm -Rf tripleo
-git clone git://git.openstack.org/openstack/puppet-tripleo tripleo
+git clone https://github.com/splitwood/puppet-tripleo.git tripleo
 popd
 
 cat > $HOME/tripleo-undercloud-passwords.yaml <<-EOF_CAT
